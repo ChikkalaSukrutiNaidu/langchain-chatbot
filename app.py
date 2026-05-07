@@ -16,7 +16,7 @@ st.write("Ask anything below 👇")
 
 # Groq model
 llm = ChatGroq(
-    model_name="llama3-70b-8192"
+    model_name="llama3-8b-8192"
 )
 
 # Prompt template
@@ -107,10 +107,18 @@ if user_input:
 
     else:
 
-        response = chain.invoke(
-            {"input": user_input}
-        )
+    try:
 
-        st.chat_message("assistant").write(
-            response.content
-        )
+    response = chain.invoke(
+        {"input": user_input}
+    )
+
+    st.chat_message("assistant").write(
+        response.content
+    )
+
+    except Exception as e:
+
+    st.chat_message("assistant").write(
+        "⚠️ Error generating response. Please try again."
+    )
