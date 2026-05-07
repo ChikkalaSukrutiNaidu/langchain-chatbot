@@ -1,10 +1,10 @@
 from langchain_groq import ChatGroq
 from langchain_core.prompts import ChatPromptTemplate
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 import streamlit as st
 
 # Load API key
-load_dotenv()
+# load_dotenv()
 
 # Streamlit page settings
 st.set_page_config(page_title="College Assistant Chatbot")
@@ -16,6 +16,7 @@ st.write("Ask anything below 👇")
 
 # Groq model
 llm = ChatGroq(
+    groq_api_key=st.secrets["GROQ_API_KEY"],
     model_name="llama3-8b-8192"
 )
 
