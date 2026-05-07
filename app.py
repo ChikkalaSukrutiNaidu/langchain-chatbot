@@ -12,9 +12,8 @@ st.write("Ask anything below 👇")
 # Load Groq model
 llm = ChatGroq(
     groq_api_key=st.secrets["GROQ_API_KEY"],
-    model_name="llama3-8b-8192"
+    model_name="llama-3.1-8b-instant"
 )
-
 # User input
 user_input = st.chat_input("Type your question...")
 
