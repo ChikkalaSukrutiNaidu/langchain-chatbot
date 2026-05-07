@@ -3,7 +3,7 @@ from langchain_core.prompts import ChatPromptTemplate
 from dotenv import load_dotenv
 import streamlit as st
 
-# Load API key from .env
+# Load API key
 load_dotenv()
 
 # Streamlit page settings
@@ -55,6 +55,7 @@ if user_input:
             remaining_classes = int(parts[2])
 
             total_classes = 100
+
             attended_classes = (
                 current_attendance / 100
             ) * total_classes
@@ -107,18 +108,18 @@ if user_input:
 
     else:
 
-    try:
+        try:
 
-    response = chain.invoke(
-        {"input": user_input}
-    )
+            response = chain.invoke(
+                {"input": user_input}
+            )
 
-    st.chat_message("assistant").write(
-        response.content
-    )
+            st.chat_message("assistant").write(
+                response.content
+            )
 
-    except Exception as e:
+        except Exception as e:
 
-    st.chat_message("assistant").write(
-        "⚠️ Error generating response. Please try again."
-    )
+            st.chat_message("assistant").write(
+                "⚠️ Error generating response. Please try again."
+            )
